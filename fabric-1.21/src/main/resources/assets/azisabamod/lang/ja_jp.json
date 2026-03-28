@@ -1,5 +1,7 @@
 {
   "text.config.azisabamod-config.option.general": "一般",
+  "text.config.azisabamod-config.option.blockPlacementPreview": "Build-Tool設置プレビュー",
+  "text.config.azisabamod-config.option.blockPlacementPreview.tooltip": "設置される位置にブロック形状のアウトラインを表示します",
   "text.config.azisabamod-config.option.apiKey": "APIキー",
   "text.config.azisabamod-config.option.apiKey.tooltip": "アジ鯖内で/apikeyで入手できるAPIキー"
 }

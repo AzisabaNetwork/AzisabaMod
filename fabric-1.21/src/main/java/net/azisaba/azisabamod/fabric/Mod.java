@@ -24,6 +24,7 @@ public class Mod implements ModInitializer {
             dispatcher.register(Commands.builder());
         });
         new AzisabaDebugScreenEntries();
+        new PlacementPreviewRenderer();
     }
 
     public static String makeRequest(String path) throws IOException, URISyntaxException {

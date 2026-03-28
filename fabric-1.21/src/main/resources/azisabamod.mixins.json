@@ -4,11 +4,12 @@
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [],
 	"client": [
-		"MixinItemStack",
-		"MixinPlayerListHud",
+		"MixinAbstractContainerScreen",
+		"MixinClientCommonNetworkHandlerAccessor",
 		"MixinClientConnection",
 		"MixinClientConnectionAccessor",
-		"MixinClientCommonNetworkHandlerAccessor"
+		"MixinItemStack",
+		"MixinPlayerListHud"
 	],
 	"injectors": {
 		"defaultRequire": 1

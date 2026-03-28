@@ -14,6 +14,8 @@ public class AzisabaDebugScreenEntries {
     public static final DebugEntryCategory DEBUG_ENTRY_CATEGORY = new DebugEntryCategory(Component.literal("AzisabaMod"), 0.9F);
     public static final Identifier TPS = register("tps", new DebugEntryTps());
     public static final Identifier PING = register("ping", new DebugEntryPing());
+    public static final Identifier CURRENT_SCREEN = register("current_screen", new DebugEntryCurrentScreen());
+    public static final Identifier BUILD_TOOL_MODE = register("build_tool_mode", new DebugEntryBuildToolMode());
     public static final Identifier ITEM_TOOLTIP_MYTHIC_TYPE = register("item_tooltip_mythic_type", new DebugEntryNoop());
     public static final Identifier ITEM_TOOLTIP_ITEM_MODEL = register("item_tooltip_item_model", new DebugEntryNoop());
     public static final Identifier ITEM_TOOLTIP_CUSTOM_MODEL_DATA = register("item_tooltip_custom_model_data", new DebugEntryNoop());
