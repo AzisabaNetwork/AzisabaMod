@@ -1,8 +1,8 @@
-# AzisabaUtilityMod
+# AzisabaMod
 
 ## Fabric
 
-### 1.19.4以上
+### 1.21.11
 
 #### 前提Mod
 

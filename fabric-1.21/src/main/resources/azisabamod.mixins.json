@@ -1,0 +1,16 @@
+{
+	"required": true,
+	"package": "net.azisaba.azisabamod.fabric.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [],
+	"client": [
+		"MixinItemStack",
+		"MixinPlayerListHud",
+		"MixinClientConnection",
+		"MixinClientConnectionAccessor",
+		"MixinClientCommonNetworkHandlerAccessor"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

@@ -5,10 +5,9 @@ plugins {
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 
 val minecraftVersion = "1.21.11"
-val yarnMappings = "1.21.11+build.3"
 val loaderVersion = "0.18.4"
 val fabricVersion = "0.140.2+1.21.11"
-val archivesBaseName = "AzisabaUtilityMod-${project.name}"
+val archivesBaseName = "AzisabaMod-${project.name}"
 val adventureVersion by project.properties
 
 repositories {
@@ -24,7 +23,7 @@ repositories {
 dependencies {
     // To change the versions see the gradle.properties file
     minecraft("com.mojang:minecraft:$minecraftVersion")
-    mappings("net.fabricmc:yarn:$yarnMappings:v2")
+    mappings(loom.officialMojangMappings())
     modImplementation("net.fabricmc:fabric-loader:$loaderVersion")
 
     // Fabric API. This is technically optional, but you probably want it anyway.
@@ -75,10 +74,6 @@ tasks {
         from("LICENSE") {
             rename { "${it}_${archivesBaseName}"}
         }
-    }
-
-    shadowJar {
-        archiveBaseName.set("$archivesBaseName-DO-NOT-USE")
     }
 }
 

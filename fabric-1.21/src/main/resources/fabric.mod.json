@@ -1,29 +1,29 @@
 {
 	"schemaVersion": 1,
-	"id": "azisabautilitymod",
+	"id": "azisabamod",
 	"version": "${version}",
-	"name": "AzisabaUtilityMod",
-	"description": "Azisaba utility mod for Fabric",
+	"name": "AzisabaMod",
+	"description": "Azisaba mod for Fabric",
 	"authors": [
 		"Azisaba Network"
 	],
 	"contact": {
 		"homepage": "https://azisaba.net/",
-		"sources": "https://github.com/AzisabaNetwork/azisaba-utility-mod"
+		"sources": "https://github.com/AzisabaNetwork/azisaba-mod"
 	},
 	"license": "MIT",
-	"icon": "assets/azisabautilitymod/icon.png",
+	"icon": "assets/azisabamod/icon.png",
 	"environment": "client",
 	"entrypoints": {
 		"main": [
-            "net.azisaba.azisabautilitymod.fabric.Mod"
+			"net.azisaba.azisabamod.fabric.Mod"
 		],
 		"modmenu": [
-			"net.azisaba.azisabautilitymod.fabric.ModMenuIntegration"
+			"net.azisaba.azisabamod.fabric.ModMenuIntegration"
 		]
 	},
 	"mixins": [
-		"azisabautilitymod.mixins.json"
+		"azisabamod.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.2",

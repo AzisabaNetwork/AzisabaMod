@@ -1,0 +1,5 @@
+{
+  "text.config.azisabamod-config.option.general": "一般",
+  "text.config.azisabamod-config.option.apiKey": "APIキー",
+  "text.config.azisabamod-config.option.apiKey.tooltip": "アジ鯖内で/apikeyで入手できるAPIキー"
+}

@@ -1,0 +1,5 @@
+{
+  "text.config.azisabamod-config.option.general": "General",
+  "text.config.azisabamod-config.option.apiKey": "API Key",
+  "text.config.azisabamod-config.option.apiKey.tooltip": "the api key that you can obtain via /apikey"
+}
