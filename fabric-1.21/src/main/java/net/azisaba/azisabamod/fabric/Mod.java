@@ -14,6 +14,7 @@ import java.nio.charset.StandardCharsets;
 
 public class Mod implements ModInitializer {
     private static final Gson GSON = new Gson();
+    public static final String API_BASE = "https://api-ktor.azisaba.net";
     public static final Logger LOGGER = LoggerFactory.getLogger("AzisabaMod");
     public static final ModConfig CONFIG = new ModConfig();
 
@@ -28,7 +29,7 @@ public class Mod implements ModInitializer {
     }
 
     public static String makeRequest(String path) throws IOException, URISyntaxException {
-        String url = "https://api-ktor.azisaba.net/" + path;
+        String url = API_BASE + "/" + path;
         HttpURLConnection connection = (HttpURLConnection) new URI(url).toURL().openConnection();
         connection.addRequestProperty("Authorization", "Bearer " + CONFIG.apiKey);
         return new String(connection.getInputStream().readAllBytes(), StandardCharsets.UTF_8);

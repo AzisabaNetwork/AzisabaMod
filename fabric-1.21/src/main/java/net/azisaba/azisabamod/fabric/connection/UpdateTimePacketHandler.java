@@ -38,7 +38,7 @@ public class UpdateTimePacketHandler extends ChannelInboundHandlerAdapter {
                     new Thread(() -> {
                         StringBuilder sb = new StringBuilder(3 * 10);
                         try {
-                            var obj = Mod.requestGson("https://api-ktor.azisaba.net/players/" + entry.profileId(), JsonObject.class);
+                            var obj = Mod.requestGson(Mod.API_BASE + "/players/" + entry.profileId(), JsonObject.class);
                             if (obj.get("groups").getAsJsonArray().contains(new JsonPrimitive("developer"))) {
                                 sb.append("§b").append("d+");
                             }
