@@ -75,6 +75,9 @@ public abstract class MixinItemStack {
                 list.add(Component.literal("RepairCost: " + repairCost).withStyle(ChatFormatting.DARK_GRAY));
             }
         }
+        if (AzisabaDebugScreenEntries.isEnabled(AzisabaDebugScreenEntries.ITEM_TOOLTIP_SHULKER_ID) && tag.get("ShulkerId") instanceof StringTag(String value)) {
+            list.add(Component.literal("ShulkerId: " + value).withStyle(ChatFormatting.DARK_GRAY));
+        }
         cir.setReturnValue(list);
     }
 }
