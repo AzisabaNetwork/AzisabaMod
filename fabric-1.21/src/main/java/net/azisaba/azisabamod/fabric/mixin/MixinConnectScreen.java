@@ -10,6 +10,7 @@ import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.client.multiplayer.TransferState;
 import net.minecraft.client.multiplayer.resolver.ServerAddress;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -18,6 +19,7 @@ import java.net.URI;
 
 @Mixin(ConnectScreen.class)
 public abstract class MixinConnectScreen {
+    @Unique
     private static final ThreadLocal<Boolean> azisaba$rerouting = ThreadLocal.withInitial(() -> false);
 
     @Inject(method = "startConnecting", at = @At("HEAD"), cancellable = true)
