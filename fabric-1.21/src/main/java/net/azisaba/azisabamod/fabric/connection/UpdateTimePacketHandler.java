@@ -59,7 +59,9 @@ public class UpdateTimePacketHandler extends ChannelInboundHandlerAdapter {
                             }
                             admin.put(entry.profileId(), sb.toString());
                         } catch (RuntimeException e) {
-                            Mod.LOGGER.warn("Failed to fetch player data for {}", entry.profileId());
+                            if (Mod.CONFIG.debugLog) {
+                                Mod.LOGGER.warn("Failed to fetch player data for {}", entry.profileId());
+                            }
                         }
                     }).start();
                 }

@@ -14,7 +14,8 @@ public class CommandManager {
             new InspectCustomDataCommand(),
             new MergeCustomDataCommand(),
             new SetCustomDataCommand(),
-            new RemoveCustomDataTagElementCommand()
+            new RemoveCustomDataTagElementCommand(),
+            new InspectCommand()
     );
 
     public static @Nullable Command getCommand(String name) {

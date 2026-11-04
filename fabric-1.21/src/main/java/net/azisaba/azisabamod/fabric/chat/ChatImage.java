@@ -67,7 +67,7 @@ public class ChatImage implements AutoCloseable {
                 connection.disconnect();
             }
         } catch (Exception e) {
-            if (!e.getMessage().equals("Bad PNG Signature") && !e.getMessage().equals("PNG header missing")) {
+            if (Mod.CONFIG.debugLog && !e.getMessage().equals("Bad PNG Signature") && !e.getMessage().equals("PNG header missing")) {
                 Mod.LOGGER.warn("Failed to fetch image {}", this.url, e);
             }
         }

@@ -2,8 +2,8 @@
   "required": true,
   "package": "net.azisaba.azisabamod.fabric.mixin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
   "client": [
+    "commands.argument.item.MixinItemInputAccessor",
     "gui.MixinGuiGraphics",
     "gui.components.MixinChatComponent",
     "gui.components.MixinPlayerListHud",

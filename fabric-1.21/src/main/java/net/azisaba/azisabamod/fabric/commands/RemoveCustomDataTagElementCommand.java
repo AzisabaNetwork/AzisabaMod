@@ -1,6 +1,5 @@
 package net.azisaba.azisabamod.fabric.commands;
 
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 

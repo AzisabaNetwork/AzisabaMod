@@ -20,6 +20,7 @@ public final class ModConfig {
     private static final Path configDir = new File("config").toPath();
     private static final Path configFile = configDir.resolve("azisabamod.json");
     private static final Gson GSON = new Gson();
+    public boolean debugLog = false;
     public String apiKey = "";
     public boolean blockPlacementPreview = true;
     public BuildToolUtil.BuildTool buildTool = null;
@@ -32,6 +33,9 @@ public final class ModConfig {
             }
             if (Files.exists(configFile)) {
                 JsonObject obj = GSON.fromJson(Files.readString(configFile), JsonObject.class);
+                if (obj.has("debugLog")) {
+                    debugLog = obj.get("debugLog").getAsBoolean();
+                }
                 if (obj.has("apiKey")) {
                     apiKey = obj.get("apiKey").getAsString();
                 }
@@ -53,6 +57,7 @@ public final class ModConfig {
 
     public void save() {
         JsonObject obj = new JsonObject();
+        obj.addProperty("debugLog", debugLog);
         obj.addProperty("apiKey", apiKey);
         obj.addProperty("blockPlacementPreview", blockPlacementPreview);
         if (buildTool != null) {
@@ -70,10 +75,14 @@ public final class ModConfig {
     public @NotNull Screen createConfigScreen(@Nullable Screen parent) {
         ConfigBuilder builder = ConfigBuilder.create()
                 .setParentScreen(parent)
-                .setTitle(Component.nullToEmpty("Azisaba Mod"))
+                .setTitle(Component.literal("Azisaba Mod"))
                 .setSavingRunnable(this::save);
         ConfigEntryBuilder entryBuilder = builder.entryBuilder();
-        builder.getOrCreateCategory(Component.nullToEmpty("General"))
+        builder.getOrCreateCategory(Component.literal("General"))
+                .addEntry(entryBuilder.startBooleanToggle(Component.literal("Debug log"), debugLog)
+                        .setDefaultValue(false)
+                        .setSaveConsumer(value -> this.debugLog = value)
+                        .build())
                 .addEntry(entryBuilder.startBooleanToggle(Component.translatable("text.config.azisabamod-config.option.blockPlacementPreview"), blockPlacementPreview)
                         .setTooltip(Component.translatable("text.config.azisabamod-config.option.blockPlacementPreview.tooltip"))
                         .setDefaultValue(true)

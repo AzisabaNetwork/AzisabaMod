@@ -24,7 +24,7 @@ public class InspectCustomDataCommand implements Command {
         CompoundTag tag = Objects.requireNonNull(stack.get(DataComponents.CUSTOM_DATA)).copyTag();
         MutableComponent component = Component.literal("");
         component.append(NbtUtils.toPrettyComponent(tag));
-        component.toFlatList(component.getStyle()
+        component.withStyle(style -> style
                 .withHoverEvent(new HoverEvent.ShowText(Component.literal("クリックでコピー")))
                 .withClickEvent(new ClickEvent.CopyToClipboard(tag.toString())));
         player.displayClientMessage(component, false);

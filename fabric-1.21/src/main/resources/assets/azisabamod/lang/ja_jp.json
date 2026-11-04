@@ -3,5 +3,7 @@
   "text.config.azisabamod-config.option.blockPlacementPreview": "Build-Tool設置プレビュー",
   "text.config.azisabamod-config.option.blockPlacementPreview.tooltip": "設置される位置にブロック形状のアウトラインを表示します",
   "text.config.azisabamod-config.option.apiKey": "APIキー",
-  "text.config.azisabamod-config.option.apiKey.tooltip": "アジ鯖内で/apikeyで入手できるAPIキー"
+  "text.config.azisabamod-config.option.apiKey.tooltip": "アジ鯖内で/apikeyで入手できるAPIキー",
+  "text.chatimage.image": "[画像]",
+  "text.chatimage.not_found": "↓画像が見つかりません"
 }

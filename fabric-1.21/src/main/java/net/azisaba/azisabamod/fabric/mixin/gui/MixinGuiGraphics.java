@@ -23,8 +23,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.OptionalInt;
 
 @Mixin(GuiGraphics.class)
@@ -51,7 +49,7 @@ public abstract class MixinGuiGraphics {
             OptionalInt optWidth = image.getWidth();
             OptionalInt optHeight = image.getHeight();
             if (image.getTexture() == null || optWidth.isEmpty() || optHeight.isEmpty()) {
-                setTooltipForNextFrame(Component.literal("↓画像が見つかりません"), i, j);
+                setTooltipForNextFrame(Component.translatable("text.chatimage.not_found"), i, j);
             } else {
                 int marginWidth = guiWidth() / 16;
                 int marginHeight = guiHeight() / 16;
@@ -76,11 +74,11 @@ public abstract class MixinGuiGraphics {
 
     @Unique
     private Pair<Integer, Integer> scaleToTarget(int width, int height, int targetWidth, int targetHeight) {
-        BigDecimal bigDecimal = new BigDecimal((float) height / width).setScale(2, RoundingMode.HALF_UP);
-        double x = bigDecimal.doubleValue();
-        if (width > targetWidth) {
-            return Pair.of(targetWidth, (int) (targetWidth * x));
-        }
-        return Pair.of((int) (targetHeight / x), targetHeight);
+        double scale = Math.min((double) targetWidth / width, (double) targetHeight / height);
+        // 拡大したくない場合は次の行を追加
+        scale = Math.min(scale, 1.0);
+        return Pair.of(
+                (int) Math.round(width * scale),
+                (int) Math.round(height * scale));
     }
 }

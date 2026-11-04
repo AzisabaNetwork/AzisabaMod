@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.azisaba.azisabamod.fabric.chat.ChatImage;
 import net.azisaba.azisabamod.fabric.util.UrlUtil;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.ComponentContents;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.Style;
@@ -42,13 +43,21 @@ public class ImageContents implements ComponentContents, AutoCloseable {
     }
 
     @Override
-    public <T> @NotNull Optional<T> visit(FormattedText.ContentConsumer<T> contentConsumer) {
-        return contentConsumer.accept(UrlUtil.isShouldBeImage(image.getUrl()) ? "[画像]" : image.getUrl());
+    public <T> @NotNull Optional<T> visit(@NotNull FormattedText.ContentConsumer<T> contentConsumer) {
+        if (UrlUtil.isShouldBeImage(image.getUrl())) {
+            return Component.translatable("text.chatimage.image").getContents().visit(contentConsumer);
+        } else {
+            return contentConsumer.accept(image.getUrl());
+        }
     }
 
     @Override
-    public <T> @NotNull Optional<T> visit(FormattedText.StyledContentConsumer<T> styledContentConsumer, @NotNull Style style) {
-        return styledContentConsumer.accept(style, UrlUtil.isShouldBeImage(image.getUrl()) ? "[画像]" : image.getUrl());
+    public <T> @NotNull Optional<T> visit(@NotNull FormattedText.StyledContentConsumer<T> styledContentConsumer, @NotNull Style style) {
+        if (UrlUtil.isShouldBeImage(image.getUrl())) {
+            return Component.translatable("text.chatimage.image").getContents().visit(styledContentConsumer, style);
+        } else {
+            return styledContentConsumer.accept(style, image.getUrl());
+        }
     }
 
     @Override
