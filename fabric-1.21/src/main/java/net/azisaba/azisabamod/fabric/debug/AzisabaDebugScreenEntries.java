@@ -22,6 +22,9 @@ public class AzisabaDebugScreenEntries {
     public static final Identifier ITEM_TOOLTIP_SOULBOUND = register("item_tooltip_soulbound", new DebugEntryNoop());
     public static final Identifier ITEM_TOOLTIP_REPAIR_COST = register("item_tooltip_repair_cost", new DebugEntryNoop());
     public static final Identifier ITEM_TOOLTIP_SHULKER_ID = register("item_tooltip_shulker_id", new DebugEntryNoop());
+    public static final Identifier ITEM_UNHIDE_ATTRIBUTES = register("item_unhide_attributes", new DebugEntryNoop());
+    public static final Identifier ITEM_UNHIDE_ENCHANTMENTS = register("item_unhide_enchantments", new DebugEntryNoop());
+    public static final Identifier ITEM_UNHIDE_ALL = register("item_unhide_all", new DebugEntryNoop());
     public static final Identifier INDICATOR_IN_PLAYER_LIST = register("indicator_in_player_list", new DebugEntryNoop());
 
     private static @NonNull Identifier register(@NotNull String name, @NotNull DebugScreenEntry entry) {

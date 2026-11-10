@@ -4,6 +4,7 @@ import net.azisaba.azisabamod.fabric.connection.UpdateTimePacketHandler;
 import net.azisaba.azisabamod.fabric.debug.AzisabaDebugScreenEntries;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.StringTag;
@@ -13,11 +14,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.item.component.TooltipDisplay;
 import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.ArrayList;
@@ -28,6 +31,28 @@ import java.util.UUID;
 @Mixin(ItemStack.class)
 public abstract class MixinItemStack {
     @Shadow public abstract DataComponentMap getComponents();
+
+    @Redirect(method = "addAttributeTooltips", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/component/TooltipDisplay;shows(Lnet/minecraft/core/component/DataComponentType;)Z"))
+    public boolean addAttributeTooltipsForDebug(TooltipDisplay instance, DataComponentType<?> dataComponentType) {
+        if (AzisabaDebugScreenEntries.isEnabled(AzisabaDebugScreenEntries.ITEM_UNHIDE_ALL)) {
+            return true;
+        }
+        if (AzisabaDebugScreenEntries.isEnabled(AzisabaDebugScreenEntries.ITEM_UNHIDE_ATTRIBUTES)) {
+            return true;
+        }
+        return instance.shows(dataComponentType);
+    }
+
+    @Redirect(method = "addToTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/component/TooltipDisplay;shows(Lnet/minecraft/core/component/DataComponentType;)Z"))
+    public boolean addToTooltipForDebug(TooltipDisplay instance, DataComponentType<?> dataComponentType) {
+        if (AzisabaDebugScreenEntries.isEnabled(AzisabaDebugScreenEntries.ITEM_UNHIDE_ALL)) {
+            return true;
+        }
+        if (dataComponentType == DataComponents.ENCHANTMENTS && AzisabaDebugScreenEntries.isEnabled(AzisabaDebugScreenEntries.ITEM_UNHIDE_ENCHANTMENTS)) {
+            return true;
+        }
+        return instance.shows(dataComponentType);
+    }
 
     @Inject(method = "getTooltipLines", at = @At("RETURN"), cancellable = true)
     public void addTooltip(Item.TooltipContext context, @Nullable Player player, TooltipFlag type, CallbackInfoReturnable<List<Component>> cir) {
