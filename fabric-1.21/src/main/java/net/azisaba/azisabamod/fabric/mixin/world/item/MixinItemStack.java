@@ -7,7 +7,6 @@ import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.IntTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
@@ -104,19 +103,8 @@ public abstract class MixinItemStack {
         if (AzisabaDebugScreenEntries.isEnabled(AzisabaDebugScreenEntries.ITEM_TOOLTIP_SHULKER_ID) && tag.get("ShulkerId") instanceof StringTag(String value)) {
             list.add(Component.literal("ShulkerId: " + value).withStyle(ChatFormatting.DARK_GRAY));
         }
-        if (AzisabaDebugScreenEntries.isEnabled(AzisabaDebugScreenEntries.ITEM_TOOLTIP_WEAPON_ID)) {
-            Integer weaponId = null;
-            if (tag.get("weapon_id") instanceof IntTag(int value)) {
-                weaponId = value;
-            } else if (tag.get("weapon_id") instanceof StringTag(String value)) {
-                try {
-                    weaponId = Integer.parseInt(value);
-                } catch (NumberFormatException ignored) {
-                }
-            }
-            if (weaponId != null) {
-                list.add(Component.literal("WeaponId: " + weaponId).withStyle(ChatFormatting.DARK_GRAY));
-            }
+        if (AzisabaDebugScreenEntries.isEnabled(AzisabaDebugScreenEntries.ITEM_TOOLTIP_WEAPON_ID) && publicBukkitValues.get("crackshot:weapon_id") instanceof StringTag(String value)) {
+            list.add(Component.literal("CSID: " + value).withStyle(ChatFormatting.DARK_GRAY));
         }
         cir.setReturnValue(list);
     }

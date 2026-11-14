@@ -10,7 +10,7 @@ allprojects {
     }
 
     group = "net.azisaba.azisabamod"
-    version = "2.2.0-SNAPSHOT"
+    version = "2.3.0-SNAPSHOT"
 
     repositories {
         // mavenLocal()
