@@ -1,6 +1,5 @@
 package net.azisaba.azisabamod.fabric.util;
 
-import net.azisaba.azisabamod.fabric.Mod;
 import net.azisaba.azisabamod.fabric.chat.ChatImage;
 import net.azisaba.azisabamod.fabric.chat.ChatImageHoverEvent;
 import net.azisaba.azisabamod.fabric.chat.contents.ImageContents;

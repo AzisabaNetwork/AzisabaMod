@@ -24,7 +24,7 @@ public class Mod implements ModInitializer {
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
             dispatcher.register(Commands.builder());
         });
-        new AzisabaDebugScreenEntries();
+        AzisabaDebugScreenEntries.init();
         new PlacementPreviewRenderer();
     }
 

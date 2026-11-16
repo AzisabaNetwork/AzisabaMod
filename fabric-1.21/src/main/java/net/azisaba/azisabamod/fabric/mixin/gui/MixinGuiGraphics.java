@@ -75,7 +75,6 @@ public abstract class MixinGuiGraphics {
     @Unique
     private Pair<Integer, Integer> scaleToTarget(int width, int height, int targetWidth, int targetHeight) {
         double scale = Math.min((double) targetWidth / width, (double) targetHeight / height);
-        // 拡大したくない場合は次の行を追加
         scale = Math.min(scale, 1.0);
         return Pair.of(
                 (int) Math.round(width * scale),

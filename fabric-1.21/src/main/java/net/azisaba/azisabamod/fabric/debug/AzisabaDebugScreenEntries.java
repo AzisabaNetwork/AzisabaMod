@@ -38,4 +38,6 @@ public class AzisabaDebugScreenEntries {
         var status = Minecraft.getInstance().debugEntries.getStatus(id);
         return status == DebugScreenEntryStatus.ALWAYS_ON || status == DebugScreenEntryStatus.IN_OVERLAY;
     }
+
+    public static void init() {}
 }

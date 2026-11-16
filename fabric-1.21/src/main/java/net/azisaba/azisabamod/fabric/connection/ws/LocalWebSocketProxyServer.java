@@ -105,11 +105,6 @@ public final class LocalWebSocketProxyServer {
         }
 
         @Override
-        public void onOpen(WebSocket webSocket) {
-            webSocket.request(1);
-        }
-
-        @Override
         public CompletionStage<?> onBinary(WebSocket webSocket, ByteBuffer data, boolean last) {
             try {
                 byte[] bytes = new byte[data.remaining()];
