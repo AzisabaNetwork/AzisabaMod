@@ -1,4 +1,4 @@
-java.toolchain.languageVersion.set(JavaLanguageVersion.of(8))
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 
 val adventureVersion by project.properties
 

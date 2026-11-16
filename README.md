@@ -2,6 +2,10 @@
 
 All-in-one mod for Azisaba
 
+## paper-moduleってなんやねん
+
+ブロックを追加できるようにしようとした残骸コード
+
 ## 機能
 
 - Build-Toolのプレビュー表示

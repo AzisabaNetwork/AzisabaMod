@@ -19,3 +19,4 @@ plugins {
 
 include("common")
 include("fabric-1.21")
+include("paper-module")

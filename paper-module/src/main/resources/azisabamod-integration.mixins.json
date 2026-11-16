@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "net.azisaba.azisabamod.paper.mixin",
+  "minVersion": "0.8.7",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "MixinBuiltInRegistries",
+    "network.MixinConnection",
+    "network.MixinPacketEncoder",
+    "network.MixinPlayerChunkSender",
+    "network.protocol.game.MixinClientboundBlockUpdatePacketAccessor",
+    "network.protocol.game.MixinClientboundLevelChunkPacketData",
+    "paper.MixinFeatureHooks",
+    "server.network.MixinServerConfigurationPacketListenerImpl",
+    "world.item.ItemStackAccessor"
+  ]
+}
