@@ -28,7 +28,7 @@ public abstract class MixinAbstractContainerScreen extends Screen {
     public void onClose(CallbackInfo ci) {
         LocalPlayer player = Minecraft.getInstance().player;
         if (player == null) return;
-        if (getMenu() instanceof ChestMenu chestMenu && "Build Tool Options".equals(title.tryCollapseToString()) && BuildToolUtil.isBuildTool(player.getMainHandItem())) {
+        if (getMenu() instanceof ChestMenu chestMenu && title.getString().contains("Build Tool Options") && BuildToolUtil.isBuildTool(player.getMainHandItem())) {
             Mod.CONFIG.buildTool = BuildToolUtil.identifyOptions(chestMenu);
             Mod.CONFIG.saveAsync();
         }

@@ -85,11 +85,14 @@ public final class PlacementPreviewRenderer {
     }
 
     private void renderSquare(WorldRenderContext context, LocalPlayer player, BlockPos base, @Range(from = 1, to = 64) int size, Direction direction) {
-        renderSingle(context, base);
-        for (int i = 2; i <= size; i++) {
-            List<Direction> directions = getDirections(direction);
-            Set<BlockPos> rendered = new HashSet<>();
-            renderStack(context, player, base, direction, directions, i, rendered);
+        Direction[] axes = orthogonal(direction);
+        for (int x = 0; x < size; x++) {
+            for (int y = 0; y < size; y++) {
+                BlockPos pos = base.relative(axes[0], x).relative(axes[1], y);
+                if (player.level().getBlockState(pos).isAir()) {
+                    renderSingle(context, pos);
+                }
+            }
         }
     }
 
@@ -140,6 +143,14 @@ public final class PlacementPreviewRenderer {
             set.add(Direction.SOUTH);
         }
         return set;
+    }
+
+    private Direction[] orthogonal(Direction face) {
+        return switch (face) {
+            case UP, DOWN -> new Direction[]{Direction.NORTH, Direction.EAST};
+            case NORTH, SOUTH -> new Direction[]{Direction.UP, Direction.EAST};
+            case EAST, WEST -> new Direction[]{Direction.UP, Direction.NORTH};
+        };
     }
 
     private void renderStack(WorldRenderContext context, LocalPlayer player, BlockPos pos, Direction hitResult, List<Direction> directions, int size, Set<BlockPos> rendered) {
